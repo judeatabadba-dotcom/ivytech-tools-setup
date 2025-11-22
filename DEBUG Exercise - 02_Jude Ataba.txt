@@ -1,0 +1,44 @@
+Debug Exercise 02 — Corrected Pseudocode
+
+// This pseudocode displays employee net pay.
+// Each employee has a $45 deduction removed from gross pay.
+// If gross pay does not cover the deduction, net pay is 0, and an error is displayed.
+
+start
+   // Declarations
+   string name
+   num hours
+   num rate
+   num DEDUCTION
+   string EOFNAME
+   num gross
+   num net
+
+   DEDUCTION = 45
+   EOFNAME = "ZZZ"
+
+   output "Enter first name or ", EOFNAME, " to quit"
+   input name
+
+   while name <> EOFNAME
+      output "Enter hours worked for ", name
+      input hours
+
+      output "Enter hourly rate for ", name
+      input rate
+
+      gross = hours * rate
+      net = gross - DEDUCTION
+
+      if net > 0 then
+         output "Net pay for ", name, " is ", net
+      else
+         output "Deductions not covered. Net is 0."
+      endif
+
+      output "Enter next name or ", EOFNAME, " to quit"
+      input name
+   endwhile
+
+   output "End of job"
+stop

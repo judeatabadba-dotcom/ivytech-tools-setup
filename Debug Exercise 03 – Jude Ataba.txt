@@ -1,0 +1,40 @@
+Debug Exercise 03 – Corrected Pseudocode
+
+// This pseudocode is intended to determine whether students have
+// passed or failed a course; student needs to average 60 or
+// more on two tests.
+
+start
+   // Declarations
+   num firstTest
+   num secondTest
+   num average
+   num PASSING
+
+   PASSING = 60
+
+   // Priming input
+   output "Enter first score or 0 to quit "
+   input firstTest
+
+   while firstTest <> 0
+      output "Enter second score "
+      input secondTest
+
+      // Calculate the average of the two tests
+      average = (firstTest + secondTest) / 2
+
+      output "Average is ", average
+
+      if average >= PASSING then
+         output "Pass"
+      else
+         output "Fail"
+      endif
+
+      // Get next first score or 0 to quit
+      output "Enter first score or 0 to quit "
+      input firstTest
+   endwhile
+
+stop

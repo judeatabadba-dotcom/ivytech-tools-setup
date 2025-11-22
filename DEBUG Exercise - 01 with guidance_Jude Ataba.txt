@@ -1,0 +1,49 @@
+Question 1
+You have been tasked with reviewing and updating this program. What steps would you take to identify any issues in the code?
+My Response:
+To identify issues in the code, I would first read the pseudocode carefully to understand its purpose: deciding whether a student passes or fails based on the average of two test scores. Next, I would check the declarations to ensure every variable used is declared and spelled consistently, such as firstTest, secondTest, average, and PASSING. Then I would review the input and output statements to confirm that each prompt has a matching input statement, and that the correct variables are being read and displayed. I would also inspect the while loop and the if statement to verify that the conditions make sense and that the loop has a proper starting input and an update input so it can eventually end. After that, I would check the arithmetic expression for calculating the average and add parentheses so that both scores are added before dividing by 2. Finally, I would create a small test plan and desk-check the program using several sample inputs, including normal values, the passing boundary value of 60, and the quit value of 0, to confirm that the logic and outputs match expectations.
+
+Question 2
+What actions could the developer have taken to minimize the number of errors?
+My Response:
+The developer could have minimized the number of errors by planning and testing more carefully at each step. They could have started with a clear description of the program’s goal and then used consistent naming rules for all variables to avoid spelling differences. Adding comments to explain what each section of the pseudocode does would also make it easier to spot when something is missing, such as the input for firstTest. The developer could have performed a desk check with sample data before considering the code finished, walking through each line to see how the values change and whether the loop condition and average calculation behave correctly. Testing the program in small pieces, such as first verifying the inputs and outputs, then the average calculation, and then the pass or fail decision, would help catch mistakes earlier. Finally, having another person review the pseudocode could help catch simple issues, such as a misspelled keyword or a missing input statement.
+
+ Corrected Pseudocode:
+
+// This pseudocode is intended to determine whether students have
+// passed or failed a course; a student needs to average 60 or
+// more on two tests.
+
+start
+   // Declarations
+   num firstTest
+   num secondTest
+   num average
+   num PASSING
+
+   PASSING = 60
+
+   // Priming read
+   output "Enter first score or 0 to quit "
+   input firstTest
+
+   while firstTest <> 0
+      output "Enter second score "
+      input secondTest
+
+      // Calculate the average of the two tests
+      average = (firstTest + secondTest) / 2
+
+      output "Average is ", average
+
+      if average >= PASSING then
+         output "Pass"
+      else
+         output "Fail"
+      endif
+
+      // Get next first score or 0 to quit
+      output "Enter first score or 0 to quit "
+      input firstTest
+   endwhile
+stop

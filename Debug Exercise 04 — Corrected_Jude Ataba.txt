@@ -1,0 +1,52 @@
+Debug Exercise 04 — Corrected Pseudocode
+
+// This pseudocode computes and displays total cost of home ownership.
+// Program continues for multiple users until mortgage payment is 0.
+
+start
+   // Declarations
+   num mortgagePayment
+   num utilities
+   num taxes
+   num upkeep
+   num total
+
+   startUp()
+
+   while mortgagePayment <> 0
+      mainLoop()
+   endwhile
+
+   finishUp()
+stop
+
+
+startUp()
+   output "Enter your mortgage payment or 0 to quit"
+   input mortgagePayment
+return
+
+
+mainLoop()
+   output "Enter utilities"
+   input utilities
+
+   output "Enter taxes"
+   input taxes
+
+   output "Enter amount for upkeep"
+   input upkeep
+
+   total = mortgagePayment + utilities + taxes + upkeep
+
+   output "Total is ", total
+
+   // prompt for next cycle
+   output "Enter your mortgage payment or 0 to quit"
+   input mortgagePayment
+return
+
+
+finishUp()
+   output "End of program"
+return
