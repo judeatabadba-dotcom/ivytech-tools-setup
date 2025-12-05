@@ -1,0 +1,15 @@
+"""
+This program creates variables for 'cats' and 'dogs'
+then combines them into the sentence:
+"It is raining cats and dogs."
+"""
+
+# Set variables
+c = "cats"
+d = "dogs"
+
+# Create the full sentence using the variables
+s = "It is raining " + c + " and " + d + "."
+
+# Print the result
+print(s)
