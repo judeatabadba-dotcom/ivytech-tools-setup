@@ -1,0 +1,95 @@
+Module 8 - Exercise 1 - Merge File - Pseudocode
+
+
+InputFile geraldinesFile
+InputFile gerardsFile
+OutputFile mergedFile
+
+num gerCustNum, gerArea
+string gerLastName, gerAddress
+
+num gadCustNum, gadArea
+string gadLastName, gadAddress
+
+bool geraldinesEOF
+bool gerardsEOF
+
+
+open geraldinesFile "Geraldines Businesses.csv"
+open gerardsFile "Geralds Businesses.csv"
+open mergedFile "Merged_Customers.csv"
+
+
+if EndOfFile(geraldinesFile) then
+    geraldinesEOF = true
+else
+    geraldinesEOF = false
+    read gerCustNum, gerLastName, gerAddress, gerArea from geraldinesFile
+endif
+
+if EndOfFile(gerardsFile) then
+    gerardsEOF = true
+else
+    gerardsEOF = false
+    read gadCustNum, gadLastName, gadAddress, gadArea from gerardsFile
+endif
+
+
+while geraldinesEOF = false AND gerardsEOF = false
+
+    if gerCustNum < gadCustNum then
+
+        output gerCustNum, gerLastName, gerAddress, gerArea to mergedFile
+
+        if EndOfFile(geraldinesFile) then
+            geraldinesEOF = true
+        else
+            read gerCustNum, gerLastName, gerAddress, gerArea from geraldinesFile
+        endif
+
+    else
+
+        output gadCustNum, gadLastName, gadAddress, gadArea to mergedFile
+
+        if EndOfFile(gerardsFile) then
+            gerardsEOF = true
+        else
+            read gadCustNum, gadLastName, gadAddress, gadArea from gerardsFile
+        endif
+
+    endif
+
+endwhile
+
+
+while geraldinesEOF = false
+
+    output gerCustNum, gerLastName, gerAddress, gerArea to mergedFile
+
+    if EndOfFile(geraldinesFile) then
+        geraldinesEOF = true
+    else
+        read gerCustNum, gerLastName, gerAddress, gerArea from geraldinesFile
+    endif
+
+endwhile
+
+
+while gerardsEOF = false
+
+    output gadCustNum, gadLastName, gadAddress, gadArea to mergedFile
+
+    if EndOfFile(gerardsFile) then
+        gerardsEOF = true
+    else
+        read gadCustNum, gadLastName, gadAddress, gadArea from gerardsFile
+    endif
+
+endwhile
+
+
+close geraldinesFile
+close gerardsFile
+close mergedFile
+
+stop

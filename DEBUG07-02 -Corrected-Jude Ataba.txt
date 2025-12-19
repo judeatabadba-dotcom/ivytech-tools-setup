@@ -1,0 +1,99 @@
+// DEBUG07-02 - Jude Ataba
+// Each time a salesperson sells a car at the
+// Pardeeville New and Used Auto Dealership,
+// a record is created containing the salesperson’s
+// name and the amount of the sale.
+// Sales of new and used cars are kept in separate files,
+// sorted by salesperson ID number.
+// Management has requested a merged file so that
+// all of a salesperson’s sales (both new and used cars)
+// are displayed together. The following code merges the files.
+
+start
+   Declarations
+      string newSalesperson
+      num newAmount
+      string usedSalesperson
+      num usedAmount
+      string bothAtEof = "N"
+      string HIGH_NAME = "ZZZZZ"
+      InputFile newSales
+      InputFile usedSales
+      OutputFile allSales
+
+   getReady()
+
+   while bothAtEof = "N"
+      detailLoop()
+   endwhile
+
+   finish()
+stop
+
+
+getReady()
+   open newSales "NewSales.dat"
+   open usedSales "UsedSales.dat"
+   open allSales "AllSales.dat"
+
+   readNew()
+   readUsed()
+   checkEof()
+return
+
+
+readNew()
+   if eof newSales then
+      newSalesperson = HIGH_NAME
+      newAmount = 0
+   else
+      input newSalesperson, newAmount from newSales
+   endif
+return
+
+
+readUsed()
+   if eof usedSales then
+      usedSalesperson = HIGH_NAME
+      usedAmount = 0
+   else
+      input usedSalesperson, usedAmount from usedSales
+   endif
+return
+
+
+checkEof()
+   if newSalesperson = HIGH_NAME AND usedSalesperson = HIGH_NAME then
+      bothAtEof = "Y"
+   endif
+return
+
+
+detailLoop()
+   if newSalesperson < usedSalesperson then
+
+      output newSalesperson, newAmount to allSales
+      readNew()
+
+   elseif usedSalesperson < newSalesperson then
+
+      output usedSalesperson, usedAmount to allSales
+      readUsed()
+
+   else
+      // Same salesperson: output both so the sales stay together
+      output newSalesperson, newAmount to allSales
+      output usedSalesperson, usedAmount to allSales
+      readNew()
+      readUsed()
+   endif
+
+   checkEof()
+return
+
+
+finish()
+   close newSales
+   close usedSales
+   close allSales
+return
